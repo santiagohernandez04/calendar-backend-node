@@ -9,6 +9,8 @@ const app = express();
 // Base de datos
 dbConnection();
 
+app.use(cors());
+
 // Directorio publico
 app.use(express.static('public'));
 
