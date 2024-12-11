@@ -1,3 +1,6 @@
+
+const path = require('path');
+
 const express = require('express');
 require('dotenv').config(); // Configuracion de variables de entorno 
 const cors = require('cors');
@@ -22,6 +25,10 @@ app.use(express.json()); // Middleware para parsear el body
 app.use('/api/auth', require('./routes/auth'));
 // TODO: CRUD: Eventos
 app.use('/api/events', require('./routes/events'));
+
+app.use('*', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+}); // Cualquier otra ruta que no sea las anteriores, se redirige al index.html
 
 
 // Escuchar peticiones
